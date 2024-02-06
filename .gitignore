@@ -2,4 +2,6 @@
 .gradle
 build
 bin
+*.iml
+
 
