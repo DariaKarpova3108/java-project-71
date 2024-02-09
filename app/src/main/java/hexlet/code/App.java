@@ -2,35 +2,46 @@ package hexlet.code;
 
 import picocli.CommandLine;
 
-import java.util.Arrays;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.concurrent.Callable;
 
-@CommandLine.Command
-public class App implements Runnable {
-    @CommandLine.Option(names = {"-f", "--format=format"}, paramLabel = "format", defaultValue = "", description = "output format [default: stylish]")
+@CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "",
+        description = "Compares two configuration files and shows a difference.")
+
+public class App implements Callable<String> {
+    @CommandLine.Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format;
 
-    @CommandLine.Option(names = {"-h", "--help"}, description = "Show this help message and exit.")
-    private String help;
-
-    @CommandLine.Option(names = {"-v", "--version"}, description = "Print version information and exit.")
-    private String version;
     @CommandLine.Parameters(index = "0", description = "path to first file")
-    private String filepath1;
+    private File filepath1;
 
     @CommandLine.Parameters(index = "1", description = "path to second file")
-    private String filepath2;
+    private File filepath2;
 
+    @Override
+    public String call() throws Exception {
+        String contentFomFirstFile = new String(Files.readAllBytes(Paths.get(filepath1.toURI())));
+        String contentFromSecondFile = new String(Files.readAllBytes(Paths.get(filepath2.toURI())));
+        String result = "";
 
-    public void run() {
-        System.out.println(filepath1 + " path to first file");
-        System.out.println(filepath2 + " path to second file");
-        System.out.println(format + " output format [default: stylish]");
-        System.out.println(help + " Show this help message and exit.");
-        System.out.println(version + " Print version information and exit.");
+        if(contentFomFirstFile.length()==0 && contentFromSecondFile.length()==0) {
+            System.out.println("");
+        }
+
+        for (int i = 0; i < contentFomFirstFile.length(); i++) {
+            for (int k = 0; k < contentFromSecondFile.length(); k++) {
+                if (contentFomFirstFile.charAt(i) != contentFromSecondFile.charAt(k)) {
+                    result = "" + contentFomFirstFile.charAt(i);
+                }
+            }
+        }
+        return result;
     }
-
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(args));
-        new CommandLine(new App()).execute(args);
+        int gendiff = new CommandLine(new App()).execute(args);
+        System.exit(gendiff);
     }
 }
+
