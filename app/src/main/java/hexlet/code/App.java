@@ -1,47 +1,55 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 
-import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.concurrent.Callable;
 
-@CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "",
-        description = "Compares two configuration files and shows a difference.")
+@CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "", description = "Compares two configuration files and shows a difference.")
 
 public class App implements Callable<String> {
     @CommandLine.Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format;
 
     @CommandLine.Parameters(index = "0", description = "path to first file")
-    private File filepath1;
+    private String filepath1 = "/Users/dariakarpova/Documents/java-project-71/app/filepath1.json";
 
     @CommandLine.Parameters(index = "1", description = "path to second file")
-    private File filepath2;
+    private String filepath2 = "/Users/dariakarpova/Documents/java-project-71/app/filepath2.json";
 
     @Override
-    public String call() throws Exception {
-        String contentFomFirstFile = new String(Files.readAllBytes(Paths.get(filepath1.toURI())));
-        String contentFromSecondFile = new String(Files.readAllBytes(Paths.get(filepath2.toURI())));
-        String result = "";
+    public String call() throws IOException {
 
-        if(contentFomFirstFile.length()==0 && contentFromSecondFile.length()==0) {
-            System.out.println("");
-        }
+        String contentFomFirstFile = new String(Files.readAllBytes(Paths.get(filepath1)));
+        String contentFromSecondFile = new String(Files.readAllBytes(Paths.get(filepath2)));
 
-        for (int i = 0; i < contentFomFirstFile.length(); i++) {
-            for (int k = 0; k < contentFromSecondFile.length(); k++) {
-                if (contentFomFirstFile.charAt(i) != contentFromSecondFile.charAt(k)) {
-                    result = "" + contentFomFirstFile.charAt(i);
-                }
-            }
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        ContentFile1 content1 = objectMapper.readValue(contentFomFirstFile, ContentFile1.class);
+        ContentFile2 content2 = objectMapper.readValue(contentFromSecondFile, ContentFile2.class);
+
+        Map<String, Object> file1 = objectMapper.convertValue(content1, Map.class);
+        Map<String, Object> file2 = objectMapper.convertValue(content2, Map.class);
+
+        Differ gif = new Differ();
+        try {
+            String result = gif.generate(file1, file2);
+            return result;
+        } catch (Exception ex) {
+            System.out.println("Error reading files: " + ex.getMessage());
+            return "";
         }
-        return result;
     }
+
     public static void main(String[] args) {
-        int gendiff = new CommandLine(new App()).execute(args);
-        System.exit(gendiff);
+        App app = new App();
+        CommandLine commandLine = new CommandLine(app);
+        commandLine.execute(args);
     }
 }
+
 
