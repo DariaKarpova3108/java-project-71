@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.*;
 
 public class Differ {
-    public  String generate(Map<String, Object> file1, Map<String, Object> file2) {
+    public String generate(Map<String, Object> file1, Map<String, Object> file2) {
         String list = "";
         for (Map.Entry<String, Object> entry : file1.entrySet()) {
             Object value = entry.getValue();
