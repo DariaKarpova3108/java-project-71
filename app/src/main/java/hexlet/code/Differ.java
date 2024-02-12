@@ -27,9 +27,9 @@ public class Differ {
                 list += "- " + key2 + ": " + value2 + "\n";
             }
         }
-        List<String> listArr = Arrays.asList(list.split("/n"));
+        List<String> listArr = Arrays.asList(list.split("\n"));
         Collections.sort(listArr);
-        String result = String.join("/n", listArr);
+        String result = String.join("\n", listArr);
 
         return result;
     }

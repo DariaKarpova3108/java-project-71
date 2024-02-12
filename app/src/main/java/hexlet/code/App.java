@@ -12,10 +12,8 @@ import java.util.concurrent.Callable;
 @CommandLine.Command(name = "gendiff", mixinStandardHelpOptions = true, version = "", description = "Compares two configuration files and shows a difference.")
 
 public class App implements Callable<String> {
-    private Map<String, Object> file1;
-    private Map<String, Object> file2;
 
-
+    private static ObjectMapper mapper = new ObjectMapper();
     @CommandLine.Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format;
 
@@ -26,16 +24,20 @@ public class App implements Callable<String> {
     private String filepath2 = "/Users/dariakarpova/Documents/java-project-71/app/filepath2.json";
 
     @Override
-    public String call() throws IOException {
+    public String call()  {
+        Map<String, Object> file1 = null;
+        try {
+            file1 = readAndConvertFile1(filepath1);
+        } catch (IOException e) {
+            System.out.println("Error reading and converting file1: " + e.getMessage());
+        }
+        Map<String, Object> file2 = null;
+        try {
+            file2 = readAndConvertFile2(filepath2);
+        } catch (IOException e) {
+            System.out.println("Error reading and converting file2: " + e.getMessage());
+        }
 
-        String contentFomFirstFile = new String(Files.readAllBytes(Paths.get(filepath1)));
-        String contentFromSecondFile = new String(Files.readAllBytes(Paths.get(filepath2)));
-        ObjectMapper objectMapper = new ObjectMapper();
-        ContentFile1 content1 = objectMapper.readValue(contentFomFirstFile, ContentFile1.class);
-        ContentFile2 content2 = objectMapper.readValue(contentFromSecondFile, ContentFile2.class);
-
-        file1 = objectMapper.convertValue(content1, Map.class);
-        file2 = objectMapper.convertValue(content2, Map.class);
         Differ gif = new Differ();
 
         try {
@@ -45,6 +47,18 @@ public class App implements Callable<String> {
             System.out.println("Error reading files: " + ex.getMessage());
             return "";
         }
+    }
+
+    public static Map<String, Object> readAndConvertFile1(String filepath) throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(filepath)));
+        ContentFile1 readerFile1 = mapper.convertValue(content, ContentFile1.class);
+        return mapper.convertValue(readerFile1, Map.class);
+    }
+
+    public static Map<String, Object> readAndConvertFile2(String filepath) throws IOException {
+        String content = new String(Files.readAllBytes(Paths.get(filepath)));
+        ContentFile2 readerFile2 = mapper.convertValue(content, ContentFile2.class);
+        return mapper.convertValue(readerFile2, Map.class);
     }
 
     public static void main(String[] args) {
