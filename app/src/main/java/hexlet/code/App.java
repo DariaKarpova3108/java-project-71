@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
 
@@ -28,13 +29,11 @@ public class App implements Callable<String> {
         String contentFromSecondFile = new String(Files.readAllBytes(Paths.get(filepath2)));
 
         ObjectMapper objectMapper = new ObjectMapper();
-
         ContentFile1 content1 = objectMapper.readValue(contentFomFirstFile, ContentFile1.class);
         ContentFile2 content2 = objectMapper.readValue(contentFromSecondFile, ContentFile2.class);
 
         Map<String, Object> file1 = objectMapper.convertValue(content1, Map.class);
         Map<String, Object> file2 = objectMapper.convertValue(content2, Map.class);
-
         Differ gif = new Differ();
         try {
             String result = gif.generate(file1, file2);
