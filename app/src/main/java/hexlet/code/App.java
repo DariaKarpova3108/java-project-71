@@ -24,7 +24,7 @@ public class App implements Callable<String> {
     private String filepath2 = "/Users/dariakarpova/Documents/java-project-71/app/filepath2.json";
 
     @Override
-    public String call()  {
+    public String call() {
         Map<String, Object> file1 = null;
         try {
             file1 = readAndConvertFile1(filepath1);
@@ -42,6 +42,7 @@ public class App implements Callable<String> {
 
         try {
             String result = gif.generate(file1, file2);
+            System.out.println(result);
             return result;
         } catch (Exception ex) {
             System.out.println("Error reading files: " + ex.getMessage());
@@ -51,14 +52,15 @@ public class App implements Callable<String> {
 
     public static Map<String, Object> readAndConvertFile1(String filepath) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(filepath)));
-        ContentFile1 readerFile1 = mapper.convertValue(content, ContentFile1.class);
+        ContentFile1 readerFile1 = mapper.readValue(content, ContentFile1.class);
         return mapper.convertValue(readerFile1, Map.class);
     }
 
     public static Map<String, Object> readAndConvertFile2(String filepath) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(filepath)));
-        ContentFile2 readerFile2 = mapper.convertValue(content, ContentFile2.class);
+        ContentFile2 readerFile2 = mapper.readValue(content, ContentFile2.class);
         return mapper.convertValue(readerFile2, Map.class);
+
     }
 
     public static void main(String[] args) {

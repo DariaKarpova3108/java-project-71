@@ -2,15 +2,13 @@ package hexlet.code;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentFile2 {
     private int timeout;
     private boolean verbose;
     private String host;
-    public ContentFile2(int timeout, boolean verbose, String host) {
-        this.timeout = timeout;
-        this.verbose = verbose;
-        this.host = host;
+
+    public ContentFile2() {
     }
 
     public int getTimeout() {

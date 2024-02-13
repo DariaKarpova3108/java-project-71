@@ -1,15 +1,15 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ContentFile1 {
     private String host;
     private int timeout;
     private String proxy;
     private boolean follow;
-    public ContentFile1(String host, int timeout, String proxy, boolean follow) {
-        this.host = host;
-        this.timeout = timeout;
-        this.proxy = proxy;
-        this.follow = follow;
+
+    public ContentFile1() {
     }
 
     public String getHost() {
