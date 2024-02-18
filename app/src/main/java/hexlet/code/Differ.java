@@ -62,7 +62,7 @@ public class Differ {
             String prefix1 = s1.substring(0, 1);
             String prefix2 = s2.substring(0, 1);
             if (!substr1.equals(substr2)) {
-                return  substr1.compareTo(substr2);
+                return substr1.compareTo(substr2);
             }
             return prefix2.compareTo(prefix1);
         };
