@@ -54,17 +54,20 @@ public class Differ {
 
     public static String sort(String list) {
         List<String> tmp = Arrays.asList(list.split("\n"));
-        ArrayList<String> sortedList = new ArrayList<>();
-        for (int i = 0; i < tmp.size(); i++) {
-            sortedList.add(tmp.get(i));
-            Comparator<String> comparator = (s1, s2) -> {
-                if (s1.length() >= 3 && s2.length() >= 3) {
-                    return s1.substring(2).compareTo(s2.substring(2));
-                }
-                return 0;
-            };
-            sortedList.sort(comparator);
-        }
+        ArrayList<String> sortedList = new ArrayList<>(tmp);
+        Comparator<String> comparator = (s1, s2) -> {
+            String substr1 = s1.substring(2);
+            String substr2 = s2.substring(2);
+
+            String prefix1 = s1.substring(0, 1);
+            String prefix2 = s2.substring(0, 1);
+            if (!substr1.equals(substr2)) {
+                return  substr1.compareTo(substr2);
+            }
+            return prefix2.compareTo(prefix1);
+        };
+        sortedList.sort(comparator);
+
         String list3 = String.join("\n", sortedList);
         String result = "{" + "\n" + list3 + "\n" + "}";
         return result;
