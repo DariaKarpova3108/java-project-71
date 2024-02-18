@@ -13,29 +13,27 @@ public class Differ {
     public static Map<String, Object> readAndConvertFile1() throws IOException {
         String absolutFilepath1 = "/Users/dariakarpova/Documents/java-project-71/app/filepath1.json";
         String relativePath1 = "app/filepath1.json";
+        String content;
         if (Paths.get(absolutFilepath1).isAbsolute()) {
-            String content = new String(Files.readAllBytes(Paths.get(absolutFilepath1)));
-            ContentFile1 readerFile1 = mapper.readValue(content, ContentFile1.class);
-            return mapper.convertValue(readerFile1, Map.class);
+            content = new String(Files.readAllBytes(Paths.get(absolutFilepath1)));
         } else {
-            String contentOfRelative = new String(Files.readAllBytes(Paths.get(relativePath1)));
-            ContentFile1 readerFile1 = mapper.readValue(contentOfRelative, ContentFile1.class);
-            return mapper.convertValue(readerFile1, Map.class);
+            content = new String(Files.readAllBytes(Paths.get(relativePath1)));
         }
+        ContentFile1 readerFile1 = mapper.readValue(content, ContentFile1.class);
+        return mapper.convertValue(readerFile1, Map.class);
     }
 
     public static Map<String, Object> readAndConvertFile2() throws IOException {
         String absolutFilepath2 = "/Users/dariakarpova/Documents/java-project-71/app/filepath2.json";
         String relativePath2 = "app/filepath2.json";
+        String content;
         if (Paths.get(absolutFilepath2).isAbsolute()) {
-            String content = new String(Files.readAllBytes(Paths.get(absolutFilepath2)));
-            ContentFile2 readerFile2 = mapper.readValue(content, ContentFile2.class);
-            return mapper.convertValue(readerFile2, Map.class);
+            content = new String(Files.readAllBytes(Paths.get(absolutFilepath2)));
         } else {
-            String contentOfRelative2 = new String(Files.readAllBytes(Paths.get(relativePath2)));
-            ContentFile2 readerFile2 = mapper.readValue(contentOfRelative2, ContentFile2.class);
-            return mapper.convertValue(readerFile2, Map.class);
+            content = new String(Files.readAllBytes(Paths.get(relativePath2)));
         }
+        ContentFile2 readerFile2 = mapper.readValue(content, ContentFile2.class);
+        return mapper.convertValue(readerFile2, Map.class);
     }
 
     public static String generate(Map<String, Object> file1, Map<String, Object> file2) {
