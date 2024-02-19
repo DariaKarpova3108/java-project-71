@@ -1,12 +1,7 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import picocli.CommandLine;
-
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
@@ -15,7 +10,7 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
     final int SUCCESSFUL_EXIT = 0;
     final int WRONG_OUTPUT = 1;
-    private static ObjectMapper mapper = new ObjectMapper();
+
     @CommandLine.Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format;
     @CommandLine.Parameters(index = "0", description = "path to first file")
@@ -41,7 +36,6 @@ public class App implements Callable<Integer> {
 
     public static void main(String[] args) {
         App app = new App();
-
         CommandLine commandLine = new CommandLine(app);
         commandLine.execute(args);
     }
