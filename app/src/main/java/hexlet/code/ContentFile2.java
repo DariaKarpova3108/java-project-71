@@ -35,12 +35,12 @@ public class ContentFile2 {
         this.host = host;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "ContentFile2{" +
-                "timeout=" + timeout +
-                ", verbose=" + verbose +
-                ", host='" + host + '\'' +
+                "timeout: " + timeout +
+                ", verbose: " + verbose +
+                ", host: '" + host + '\'' +
                 '}';
-    }
+    }*/
 }
