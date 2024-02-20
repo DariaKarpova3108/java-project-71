@@ -18,8 +18,8 @@ public class DifferTest {
                 "  + timeout: 20\n" +
                 "  + verbose: true\n" +
                 "}";
-        String filepath1 = Parser.pars("");
-        String filepath2 = Parser.pars("");
+        String filepath1 = Parser.pars("/Users/dariakarpova/Documents/java-project-71/app/filepath1.json");
+        String filepath2 = Parser.pars("/Users/dariakarpova/Documents/java-project-71/app/filepath2.json");
 
         assertEquals(expected, Differ.generate(filepath1,filepath2,""));
     }

@@ -11,4 +11,5 @@ public class Parser {
         String content = new String(Files.readAllBytes(pathfile));
         return content;
     }
+
 }
