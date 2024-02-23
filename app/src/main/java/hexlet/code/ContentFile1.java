@@ -46,11 +46,11 @@ public class ContentFile1 {
 
     @Override
     public String toString() {
-        return "ContentFile1{" +
-                "host: '" + host + '\'' +
-                ", timeout: " + timeout +
-                ", proxy: '" + proxy + '\'' +
-                ", follow: '" + follow + '\'' +
-                '}';
+        return "ContentFile1{"
+                + "host: '" + host + '\''
+                + ", timeout: " + timeout
+                + ", proxy: '" + proxy + '\''
+                + ", follow: '" + follow + '\''
+                + '}';
     }
 }
