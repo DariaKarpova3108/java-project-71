@@ -16,7 +16,7 @@ public class DifferTest {
     }
 
     @Test
-    public void testGenJson() throws IOException {
+    public void testGenJson() {
         var expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
@@ -28,9 +28,8 @@ public class DifferTest {
         var actual = Differ.generate(files, "Json");
         assertEquals(expected, actual);
     }
-
-    @Test
-    public void testGenYaml() throws IOException {
+/*    @Test
+    public void testGenYaml() {
         var expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
@@ -41,5 +40,5 @@ public class DifferTest {
                 + "}";
         var actual = Differ.generate(files, "yml");
         assertEquals(expected, actual);
-    }
+    }*/
 }

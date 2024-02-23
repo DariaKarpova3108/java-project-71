@@ -23,8 +23,17 @@ public class App implements Callable<Integer> {
     @Override
     public Integer call() {
         try {
-            String result = Differ.generate(Parser.parsJson(filepath1, filepath2), format);
-            System.out.println(result);
+            String result;
+            switch (format) {
+                case "json":
+                    result = Differ.generate(Parser.parsJson(filepath1, filepath2), format);
+                    System.out.println(result);
+                    break;
+                case "yml":
+                    result = Differ.generate(Parser.parsYml(filepath1, filepath2), format);
+                    System.out.println(result);
+                    break;
+            }
             return successfulExit;
         } catch (Exception ex) {
             System.out.println("Error reading files: " + ex.getMessage());
