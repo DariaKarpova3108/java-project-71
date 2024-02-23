@@ -8,19 +8,22 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Differ {
-    static ObjectMapper mapper = new ObjectMapper();
+   // static ObjectMapper mapper = new ObjectMapper();
 
     /*  public static Map<String, Object> generate(String filepath1, String filepath2) throws IOException {
             Map<String, Object> result;
             result = generate(filepath1, filepath2, "");
             return result;
         }*/
-    public static String generate(String filepath1, String filepath2, String format) throws IOException {
-        ContentFile1 readerFile1 = mapper.readValue(Parser.parsJson(filepath1), ContentFile1.class);
+    public static String generate(Map<String, Object> files, String format) throws IOException {
+       /* ContentFile1 readerFile1 = mapper.readValue(Parser.parsJson(filepath1), ContentFile1.class);
         Map<String, Object> file1 = mapper.convertValue(readerFile1, Map.class);
 
         ContentFile2 readerFile2 = mapper.readValue(Parser.parsJson(filepath2), ContentFile2.class);
-        Map<String, Object> file2 = mapper.convertValue(readerFile2, Map.class);
+        Map<String, Object> file2 = mapper.convertValue(readerFile2, Map.class);*/
+
+        Map<String, Object> file1 = (Map<String, Object>) files.get("file1");
+        Map<String, Object> file2 = (Map<String, Object>) files.get("file2");
 
         Map<String, Object> result = new HashMap<>();
         for (var entry : file1.entrySet()) {

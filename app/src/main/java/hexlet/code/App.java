@@ -23,7 +23,7 @@ public class App implements Callable<Integer> {
     @Override
     public Integer call() {
         try {
-            String result = Differ.generate(filepath1, filepath2, format);
+            String result = Differ.generate(Parser.parsJson(filepath1, filepath2), format);
             System.out.println(result);
             return successfulExit;
         } catch (Exception ex) {
