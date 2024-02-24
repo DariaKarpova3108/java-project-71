@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-
     public static Map parsJson(String filepath1, String filepath2) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> result = new HashMap<>();

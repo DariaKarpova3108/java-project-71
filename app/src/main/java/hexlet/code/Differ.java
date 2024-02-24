@@ -1,15 +1,26 @@
 package hexlet.code;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Differ {
-    /*  public static Map<String, Object> generate(String filepath1, String filepath2) throws IOException {
-            Map<String, Object> result;
-            result = generate(filepath1, filepath2, "");
-            return result;
-        }*/
+    public static String generate(String filepath1, String filepath2) throws IOException {
+        Map<String, Object> files;
+        String format = "default";
+        switch (format) {
+            case "json":
+                files = Parser.parsJson(filepath1, filepath2);
+                return Differ.generate(files, "json");
+            case "yaml":
+                files = Parser.parsYml(filepath1, filepath2);
+                return Differ.generate(files, "yaml");
+            default:
+                throw new IllegalArgumentException("Unsupported format: " + format);
+        }
+    }
+
     public static String generate(Map<String, Object> files, String format) {
         Map<String, Object> file1 = (Map<String, Object>) files.get("file1");
         Map<String, Object> file2 = (Map<String, Object>) files.get("file2");

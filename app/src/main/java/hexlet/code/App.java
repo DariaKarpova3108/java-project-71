@@ -29,10 +29,13 @@ public class App implements Callable<Integer> {
                     result = Differ.generate(Parser.parsJson(filepath1, filepath2), format);
                     System.out.println(result);
                     break;
-                case "yml":
+                case "yaml":
                     result = Differ.generate(Parser.parsYml(filepath1, filepath2), format);
                     System.out.println(result);
                     break;
+                default:
+                    result = Differ.generate(filepath1, filepath2);
+                    System.out.println(result);
             }
             return successfulExit;
         } catch (Exception ex) {
