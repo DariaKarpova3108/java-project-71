@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-    Map<String, Object> filesJson;
+  /*  Map<String, Object> filesJson;
     Map<String, Object> filesYaml;
 
     @BeforeEach
@@ -24,10 +23,28 @@ public class DifferTest {
 
         filesYaml = Parser.parsYml(absolutePath + "/filepath1.yml",
                 absolutePath + "/filepath2.yml");
+    }*/
+
+    String filepathJson1;
+    String filepathJson2;
+    String filepathYaml1;
+    String filepathYaml2;
+
+    @BeforeEach
+    public void beforeEach() throws IOException {
+        String path = "src/test/java/resources";
+        File file = new File(path);
+        String absolutePath = file.getAbsolutePath();
+
+        filepathJson1 = absolutePath + "/filepath1.json";
+        filepathJson2 = absolutePath + "/filepath2.json";
+
+        filepathYaml1 = absolutePath + "/filepath1.yml";
+        filepathYaml2 = absolutePath + "/filepath2.yml";
     }
 
     @Test
-    public void testGenJson() {
+    public void testGenJson() throws IOException {
         var expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
@@ -36,12 +53,12 @@ public class DifferTest {
                 + "  + timeout: 20\n"
                 + "  + verbose: true\n"
                 + "}";
-        var actual = Differ.generate(filesJson, "json");
+        var actual = Differ.generate(filepathJson1, filepathJson2, "json");
         assertEquals(expected, actual);
     }
 
     @Test
-    public void testGenYaml() {
+    public void testGenYaml() throws IOException {
         var expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
@@ -50,7 +67,7 @@ public class DifferTest {
                 + "  + timeout: 20\n"
                 + "  + verbose: true\n"
                 + "}";
-        var actual = Differ.generate(filesYaml, "yaml");
+        var actual = Differ.generate(filepathYaml1, filepathYaml2, "yaml");
         assertEquals(expected, actual);
     }
 }

@@ -24,13 +24,25 @@ public class App implements Callable<Integer> {
     public Integer call() {
         try {
             String result;
-            switch (format) {
+            /*switch (format) {
                 case "json":
                     result = Differ.generate(Parser.parsJson(filepath1, filepath2), format);
                     System.out.println(result);
                     break;
                 case "yaml":
                     result = Differ.generate(Parser.parsYml(filepath1, filepath2), format);
+                    System.out.println(result);
+                    break;
+                default:
+                    result = Differ.generate(filepath1, filepath2);
+                    System.out.println(result);*/
+            switch (format) {
+                case "json":
+                    result = Differ.generate(filepath1, filepath2, "json");
+                    System.out.println(result);
+                    break;
+                case "yaml":
+                    result = Differ.generate(filepath1, filepath2, "yaml");
                     System.out.println(result);
                     break;
                 default:
