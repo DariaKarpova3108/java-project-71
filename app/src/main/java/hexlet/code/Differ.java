@@ -62,21 +62,35 @@ public class Differ {
     }*/
 
     public static String generate(String filepath1, String filepath2) throws IOException {
+        String format;
         if (filepath1.endsWith(".json") && filepath2.endsWith(".json")) {
-            return generate(filepath1, filepath2, "json");
+            format = "json";
+        } else if (filepath1.endsWith(".yml") && filepath2.endsWith(".yml")) {
+            format = "yaml";
         } else {
-            return generate(filepath1, filepath2, "yaml");
+            return "Files not found or invalid format";
         }
+
+        if (format == null) {
+            return "Unsupported format";
+        }
+
+        return generate(filepath1, filepath2, format);
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
+        if (!format.equals("json") && !format.equals("yaml")) {
+            return "Unsupported format";
+        }
+
         Map<String, Object> files = format.equals("json") ?
                 Parser.parsJson(filepath1, filepath2) : Parser.parsYml(filepath1, filepath2);
 
-        Map<String, Object> file1 = new ObjectMapper().convertValue(files.get("file1"), new TypeReference<>() {
-        });
-        Map<String, Object> file2 = new ObjectMapper().convertValue(files.get("file2"), new TypeReference<>() {
-        });
+        ObjectMapper objectMapper = new ObjectMapper();
+        TypeReference<Map<String, Object>> typeReference = new TypeReference<>() {};
+
+        Map<String, Object> file1 = objectMapper.convertValue(files.get("file1"), typeReference);
+        Map<String, Object> file2 = objectMapper.convertValue(files.get("file2"), typeReference);
 
         Map<String, Object> result = new HashMap<>();
         for (var entry : file1.entrySet()) {
