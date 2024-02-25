@@ -87,7 +87,8 @@ public class Differ {
                 Parser.parsJson(filepath1, filepath2) : Parser.parsYml(filepath1, filepath2);
 
         ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<Map<String, Object>> typeReference = new TypeReference<>() {};
+        TypeReference<Map<String, Object>> typeReference = new TypeReference<>() {
+        };
 
         Map<String, Object> file1 = objectMapper.convertValue(files.get("file1"), typeReference);
         Map<String, Object> file2 = objectMapper.convertValue(files.get("file2"), typeReference);
