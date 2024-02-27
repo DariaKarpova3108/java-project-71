@@ -11,6 +11,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+// создать общий класс парсинга и в зависимости от свич-кейс - от приходящего формата - паристь файлы (фргументы - пути, формат)
+// форматер - это формат вывода, а не приходящих файлов
+
 public class Parser {
     public static Map<String, Object> parsJson(String filepath1, String filepath2) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
