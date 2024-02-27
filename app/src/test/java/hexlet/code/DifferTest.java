@@ -36,8 +36,8 @@ public class DifferTest {
                 "  + chars2: false\n" +
                 "  - checked: false\n" +
                 "  + checked: true\n" +
-                "  - default: null\n" +
-                "  + default: [value1, value2]\n" +
+                "  - defaultValue: null\n" +
+                "  + defaultValue: [value1, value2]\n" +
                 "  - id: 45\n" +
                 "  + id: null\n" +
                 "  - key1: value1\n" +
@@ -67,8 +67,8 @@ public class DifferTest {
                 "  + chars2: false\n" +
                 "  - checked: false\n" +
                 "  + checked: true\n" +
-                "  - default: null\n" +
-                "  + default: [value1, value2]\n" +
+                "  - defaultValue: null\n" +
+                "  + defaultValue: [value1, value2]\n" +
                 "  - id: 45\n" +
                 "  + id: null\n" +
                 "  - key1: value1\n" +

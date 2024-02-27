@@ -13,32 +13,18 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
     final int successfulExit = 0;
     final int wrongOutput = 1;
-    @Option(names = {"-f", "--format"},  defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")
     private String format;
-    @Parameters(paramLabel = "filepath1" , index = "0", description = "path to first file")
+    @Parameters(paramLabel = "filepath1", index = "0", description = "path to first file")
     private String filepath1;
     @Parameters(paramLabel = "filepath1", index = "1", description = "path to second file")
     private String filepath2;
 
-    // из колл полностью убрать свич-кейс - оставить только один вызов генерейта
     @Override
     public Integer call() {
         try {
-            String result;
-
-            switch (format) {
-                case "json":
-                    result = Differ.generate(filepath1, filepath2, format);
-                    System.out.println(result);
-                    break;
-                case "yaml":
-                    result = Differ.generate(filepath1, filepath2, format);
-                    System.out.println(result);
-                    break;
-                default:
-                    result = Differ.generate(filepath1, filepath2);
-                    System.out.println(result);
-            }
+            String result = Differ.generate(filepath1, filepath2, format);
+            System.out.println(result);
             return successfulExit;
         } catch (Exception ex) {
             System.out.println("Error reading files: " + ex.getMessage());

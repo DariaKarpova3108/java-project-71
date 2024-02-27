@@ -15,7 +15,44 @@ import java.util.Map;
 // форматер - это формат вывода, а не приходящих файлов
 
 public class Parser {
-    public static Map<String, Object> parsJson(String filepath1, String filepath2) throws IOException {
+    public static Map<String, Object> pars(String filepath1, String filepath2, String format) throws IOException {
+        Map<String, Object> result = new HashMap<>();
+        Path pathFile1 = Paths.get(filepath1).toAbsolutePath().normalize();
+        Path pathFile2 = Paths.get(filepath2).toAbsolutePath().normalize();
+        String content1;
+        String content2;
+        ContentFile1 file1;
+        ContentFile2 file2;
+
+        ObjectMapper mapper;
+        switch (format) {
+            case ("json"):
+                mapper = new ObjectMapper();
+                content1 = new String(Files.readAllBytes(pathFile1));
+                file1 = mapper.readValue(content1, ContentFile1.class);
+                content2 = new String(Files.readAllBytes(pathFile2));
+                file2 = mapper.readValue(content2, ContentFile2.class);
+                break;
+            case ("yaml"):
+            case ("yml"):
+                mapper = new YAMLMapper();
+                content1 = Files.readString(pathFile1);
+                file1 = mapper.readValue(content1, ContentFile1.class);
+                content2 = Files.readString(pathFile2);
+                file2 = mapper.readValue(content2, ContentFile2.class);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + format);
+        }
+        Map<String, Object> mapFile1 = mapper.convertValue(file1, new TypeReference<>() {
+        });
+        result.put("file1", mapFile1);
+        Map<String, Object> mapFile2 = mapper.convertValue(file2, new TypeReference<>() {
+        });
+        result.put("file2", mapFile2);
+        return result;
+    }
+/*    public static Map<String, Object> parsJson(String filepath1, String filepath2) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> result = new HashMap<>();
 
@@ -53,5 +90,5 @@ public class Parser {
         result.put("file1", file1Convert);
         result.put("file2", file2Convert);
         return result;
-    }
+    }*/
 }

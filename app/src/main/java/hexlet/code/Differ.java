@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 // в генерейт endsWith  сделать отедльным методом и не вызввать 4 раза одно и тоде,
@@ -15,7 +13,8 @@ import java.util.stream.Collectors;
 // который определяется в другом методе
 
 public class Differ {
-    public static String generate(String filepath1, String filepath2) throws IOException {
+
+    public static String defineFormat(String filepath1, String filepath2) {
         String format;
         if (filepath1.endsWith(".json") && filepath2.endsWith(".json")) {
             format = "json";
@@ -28,17 +27,19 @@ public class Differ {
         if (format == null) {
             return "Unsupported format";
         }
+        return format;
+    }
 
-        return generate(filepath1, filepath2, format);
+    public static String generate(String filepath1, String filepath2) throws IOException {
+        return generate(filepath1, filepath2, defineFormat(filepath1, filepath2));
     }
 
     public static String generate(String filepath1, String filepath2, String format) throws IOException {
         if (!format.equals("json") && !format.equals("yaml")) {
-            return "Unsupported format";
+            return "stylish";
         }
 
-        Map<String, Object> files = format.equals("json") ?
-                Parser.parsJson(filepath1, filepath2) : Parser.parsYml(filepath1, filepath2);
+        Map<String, Object> files = Parser.pars(filepath1, filepath2, format);
 
         ObjectMapper objectMapper = new ObjectMapper();
         TypeReference<Map<String, Object>> typeReference = new TypeReference<>() {
@@ -47,25 +48,24 @@ public class Differ {
         Map<String, Object> file1 = objectMapper.convertValue(files.get("file1"), typeReference);
         Map<String, Object> file2 = objectMapper.convertValue(files.get("file2"), typeReference);
 
-        String result = tree(file1, file2);
-        return result;
+        return tree(file1, file2);
     }
 
-    public static String tree ( Map<String, Object> file1,  Map<String, Object> file2) {
+    public static String tree(Map<String, Object> file1, Map<String, Object> file2) {
         Map<String, Object> result = new HashMap<>();
         for (var entry : file1.entrySet()) {
             Object value = entry.getValue();
             String key = entry.getKey();
             if (file2.containsKey(key)) {
                 Object value2 = file2.get(key);
-                if (value.equals(value2)) {
+                if (value != null && value2 != null && value.toString().equals(value2.toString())) {
                     result.put("  " + key, value);
                 } else {
-                    result.put("- " + key, value);
-                    result.put("+ " + key, value2);
+                    result.put("- " + key, Optional.ofNullable(value).orElse("null"));
+                    result.put("+ " + key, Optional.ofNullable(value2).orElse("null"));
                 }
             } else {
-                result.put("- " + key, value);
+                result.put("- " + key, Optional.ofNullable(value).orElse("null"));
             }
         }
 
@@ -73,7 +73,7 @@ public class Differ {
             String key2 = entry2.getKey();
             Object value2 = entry2.getValue();
             if (!file1.containsKey(key2)) {
-                result.put("+ " + key2, value2);
+                result.put("+ " + key2, Optional.ofNullable(value2).orElse("null"));
             }
         }
 
