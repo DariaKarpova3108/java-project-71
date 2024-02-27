@@ -9,7 +9,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-// экспектид - это фикстура , т е  отдельный файл выбранного формата
+    // экспектид - это фикстура , т е  отдельный файл выбранного формата
     String filepathJson1;
     String filepathJson2;
     String filepathYaml1;
@@ -36,8 +36,8 @@ public class DifferTest {
                 "  + chars2: false\n" +
                 "  - checked: false\n" +
                 "  + checked: true\n" +
-                "  - defaultValue: null\n" +
-                "  + defaultValue: [value1, value2]\n" +
+                "  - default: null\n" +
+                "  + default: [value1, value2]\n" +
                 "  - id: 45\n" +
                 "  + id: null\n" +
                 "  - key1: value1\n" +
@@ -67,8 +67,8 @@ public class DifferTest {
                 "  + chars2: false\n" +
                 "  - checked: false\n" +
                 "  + checked: true\n" +
-                "  - defaultValue: null\n" +
-                "  + defaultValue: [value1, value2]\n" +
+                "  - default: null\n" +
+                "  + default: [value1, value2]\n" +
                 "  - id: 45\n" +
                 "  + id: null\n" +
                 "  - key1: value1\n" +

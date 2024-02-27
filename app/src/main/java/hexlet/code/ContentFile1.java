@@ -20,10 +20,10 @@ public class ContentFile1 {
     private Integer[] numbers1;
     private Integer[] numbers2;
     private int id;
-    private Object defaultValue;
+    //private Object default;
     private boolean checked;
     private Integer[] numbers3;
     private String[] chars1;
     private String[] chars2;
-
 }
+

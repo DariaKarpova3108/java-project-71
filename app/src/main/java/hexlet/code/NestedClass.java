@@ -20,6 +20,6 @@ public class NestedClass {
     }
 
     public void setNested(boolean isNested) {
-        isNested = isNested;
+        this.isNested = isNested;
     }
 }

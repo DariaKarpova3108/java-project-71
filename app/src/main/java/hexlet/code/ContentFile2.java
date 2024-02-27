@@ -20,12 +20,13 @@ public class ContentFile2 {
     private Integer[] numbers1;
     private Integer[] numbers2;
     private Object id;
-    private String[] defaultValue;
+    // private String[] default;
     private boolean checked;
     private Integer[] numbers4;
     private String[] chars1;
     private boolean chars2;
     private NestedClass obj1;
 }
+
 
 
