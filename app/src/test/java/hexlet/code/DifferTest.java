@@ -9,7 +9,6 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-    // экспектид - это фикстура , т е  отдельный файл выбранного формата
     String filepathJson1;
     String filepathJson2;
     String filepathYaml1;
@@ -17,7 +16,7 @@ public class DifferTest {
 
     @BeforeEach
     public void beforeEach() throws IOException {
-        String path = "src/test/java/resources";
+        String path = "src/main/java/resources";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
 
