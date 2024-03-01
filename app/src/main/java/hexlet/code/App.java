@@ -37,7 +37,6 @@ public class App implements Callable<Integer> {
         App app = new App();
         CommandLine commandLine = new CommandLine(app);
         commandLine.execute(args);
-        app.call();
     }
 }
 
