@@ -32,7 +32,6 @@ public class DifferTest {
         filepathYaml1 = absolutePath + "/filepath1.yml";
         filepathYaml2 = absolutePath + "/filepath2.yml";
 
-
         expectedJson = Files.readString(Paths.get("src/test/java/recources/expectedJson.json")).trim();
         expectedStylish = Files.readString(Paths.get("src/test/java/recources/expectedStylish.text")).trim();
         expectedPlain = Files.readString(Paths.get("src/test/java/recources/expectedPlain.text")).trim();
