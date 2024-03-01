@@ -1,10 +1,13 @@
 package hexlet.code;
 
+import java.nio.file.Files;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,6 +17,10 @@ public class DifferTest {
     String filepathYaml1;
     String filepathYaml2;
 
+    String expectedJson;
+    String expectedStylish;
+    String expectedPlain;
+
     @BeforeEach
     public void beforeEach() throws IOException {
         String path = "src/main/java/resources";
@@ -22,70 +29,42 @@ public class DifferTest {
 
         filepathJson1 = absolutePath + "/filepath1.json";
         filepathJson2 = absolutePath + "/filepath2.json";
-
         filepathYaml1 = absolutePath + "/filepath1.yml";
         filepathYaml2 = absolutePath + "/filepath2.yml";
+
+
+        expectedJson = Files.readString(Paths.get("src/test/java/recources/expectedJson.json")).trim();
+        expectedStylish = Files.readString(Paths.get("src/test/java/recources/expectedStylish.text")).trim();
+        expectedPlain = Files.readString(Paths.get("src/test/java/recources/expectedPlain.text")).trim();
     }
 
     @Test
-    public void testGenJson() throws IOException {
-        var expected = "{\n" +
-                "    chars1: [a, b, c]\n" +
-                "  - chars2: [d, e, f]\n" +
-                "  + chars2: false\n" +
-                "  - checked: false\n" +
-                "  + checked: true\n" +
-                "  - default: null\n" +
-                "  + default: [value1, value2]\n" +
-                "  - id: 45\n" +
-                "  + id: null\n" +
-                "  - key1: value1\n" +
-                "  + key2: value2\n" +
-                "    numbers1: [1, 2, 3, 4]\n" +
-                "  - numbers2: [2, 3, 4, 5]\n" +
-                "  + numbers2: [22, 33, 44, 55]\n" +
-                "  - numbers3: [3, 4, 5]\n" +
-                "  + numbers4: [4, 5, 6]\n" +
-                "  + obj1: {nestedKey=value, isNested=true}\n" +
-                "  - setting1: Some value\n" +
-                "  + setting1: Another value\n" +
-                "  - setting2: 200\n" +
-                "  + setting2: 300\n" +
-                "  - setting3: true\n" +
-                "  + setting3: none\n" +
-                "}";
+    public void testGenJson() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "json");
-        assertEquals(expected, actual);
+        assertEquals(expectedJson, actual);
     }
 
     @Test
-    public void testGenYaml() throws IOException {
-        var expected = "{\n" +
-                "    chars1: [a, b, c]\n" +
-                "  - chars2: [d, e, f]\n" +
-                "  + chars2: false\n" +
-                "  - checked: false\n" +
-                "  + checked: true\n" +
-                "  - default: null\n" +
-                "  + default: [value1, value2]\n" +
-                "  - id: 45\n" +
-                "  + id: null\n" +
-                "  - key1: value1\n" +
-                "  + key2: value2\n" +
-                "    numbers1: [1, 2, 3, 4]\n" +
-                "  - numbers2: [2, 3, 4, 5]\n" +
-                "  + numbers2: [22, 33, 44, 55]\n" +
-                "  - numbers3: [3, 4, 5]\n" +
-                "  + numbers4: [4, 5, 6]\n" +
-                "  + obj1: {nestedKey=value, isNested=true}\n" +
-                "  - setting1: Some value\n" +
-                "  + setting1: Another value\n" +
-                "  - setting2: 200\n" +
-                "  + setting2: 300\n" +
-                "  - setting3: true\n" +
-                "  + setting3: none\n" +
-                "}";
-        var actual = Differ.generate(filepathYaml1, filepathYaml2, "yaml");
-        assertEquals(expected, actual);
+    public void testGenJsonYaml() throws Exception {
+        var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
+        assertEquals(expectedJson, actual);
+    }
+
+    @Test
+    public void testGenStylishJson() throws Exception {
+        var actual = Differ.generate(filepathJson1, filepathJson2);
+        assertEquals(expectedStylish, actual);
+    }
+
+    @Test
+    public void testGenStylishYaml() throws Exception {
+        var actual = Differ.generate(filepathYaml1, filepathYaml2);
+        assertEquals(expectedStylish, actual);
+    }
+
+    @Test
+    public void testGenPlain() throws Exception {
+        var actual = Differ.generate(filepathJson1, filepathJson2, "plain");
+        assertEquals(expectedPlain, actual);
     }
 }

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> pars(String filepath1, String filepath2, String format) throws IOException {
+    public static Map<String, Object> pars(String filepath1, String filepath2, String formatFile) throws IOException {
         Map<String, Object> result = new HashMap<>();
         Path pathFile1 = Paths.get(filepath1).toAbsolutePath().normalize();
         Path pathFile2 = Paths.get(filepath2).toAbsolutePath().normalize();
@@ -20,9 +20,9 @@ public class Parser {
         String content2;
         Map<String, Object> file1;
         Map<String, Object> file2;
-
         ObjectMapper mapper;
-        switch (format) {
+
+        switch (formatFile) {
             case ("json"):
                 mapper = new ObjectMapper();
                 content1 = new String(Files.readAllBytes(pathFile1));
@@ -43,7 +43,7 @@ public class Parser {
                 });
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + format);
+                throw new IllegalStateException("Unexpected value: " + formatFile);
         }
 
         result.put("file1", file1);
