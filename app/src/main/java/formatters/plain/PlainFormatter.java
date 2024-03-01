@@ -32,6 +32,11 @@ public class PlainFormatter {
                 case ("deleted"):
                     resultList.add("Property" + " '" + key + "' " + "was removed");
                     break;
+                case ("withoutChanges"):
+                    resultList.remove(key);
+                    break;
+                default:
+                    throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
 

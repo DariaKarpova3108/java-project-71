@@ -27,6 +27,7 @@ public class StylishFormatter {
                 }
                 case ("deleted") -> resultList.add(Map.of("- " + key, valueOld.toString()));
                 case ("added") -> resultList.add(Map.of("+ " + key, valueNew.toString()));
+                default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
 

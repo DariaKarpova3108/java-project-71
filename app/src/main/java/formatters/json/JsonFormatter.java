@@ -3,7 +3,6 @@ package formatters.json;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.StatusValue;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,8 @@ public class JsonFormatter {
             switch (status) {
                 case ("withoutChanges") -> json.put(key, isComposite(value));
                 case ("added"), ("update") -> json.put(key, isComposite(value2));
+                case ("deleted") -> json.remove(key);
+                default ->  throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
         var listStr = json.entrySet().stream()

@@ -4,7 +4,6 @@ import formatters.json.JsonFormatter;
 import formatters.plain.PlainFormatter;
 import formatters.stylish.StylishFormatter;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
