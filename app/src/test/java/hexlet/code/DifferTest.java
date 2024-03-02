@@ -12,14 +12,14 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-    String filepathJson1;
-    String filepathJson2;
-    String filepathYaml1;
-    String filepathYaml2;
+    private String filepathJson1;
+    private String filepathJson2;
+    private String filepathYaml1;
+    private String filepathYaml2;
 
-    String expectedJson;
-    String expectedStylish;
-    String expectedPlain;
+    private String expectedJson;
+    private String expectedStylish;
+    private String expectedPlain;
 
     @BeforeEach
     public void beforeEach() throws IOException {

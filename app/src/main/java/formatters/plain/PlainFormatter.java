@@ -58,7 +58,7 @@ public class PlainFormatter {
         } else if (value instanceof String && !value.equals("null")) {
             value = "'" + value + "'";
         } else if (value.equals("null")) {
-            value = "null";
+            value = null;
         } else {
             value = String.valueOf(value);
         }
