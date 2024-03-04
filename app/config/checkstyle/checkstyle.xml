@@ -3,6 +3,34 @@
         "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
+<!--
+
+  Checkstyle configuration that checks the sun coding conventions from:
+
+    - the Java Language Specification at
+      https://docs.oracle.com/javase/specs/jls/se11/html/index.html
+
+    - the Sun Code Conventions at https://www.oracle.com/technetwork/java/codeconvtoc-136057.html
+
+    - the Javadoc guidelines at
+      https://www.oracle.com/technetwork/java/javase/documentation/index-137868.html
+
+    - the JDK Api documentation https://docs.oracle.com/en/java/javase/11/
+
+    - some best practices
+
+  Checkstyle is very configurable. Be sure to read the documentation at
+  https://checkstyle.org (or in your downloaded distribution).
+
+  Most Checks are configurable, be sure to consult the documentation.
+
+  To completely disable a check, just comment it out or delete it from the file.
+  To suppress certain violations please review suppression filters.
+
+  Finally, it is worth reading the documentation.
+
+-->
+
 <module name="Checker">
     <!--
         If you set the basedir property below, then all reported file
@@ -70,14 +98,14 @@
 
     <module name="TreeWalker">
 
-     <!--    Checks for Javadoc comments.
-         See https://checkstyle.org/config_javadoc.html-->
-              <module name="InvalidJavadocPosition"/>
-              <module name="JavadocMethod"/>
-              <module name="JavadocType"/>
-              <module name="JavadocVariable"/>
-              <module name="JavadocStyle"/>
-              <module name="MissingJavadocMethod"/>
+        <!-- Checks for Javadoc comments.                     -->
+        <!-- See https://checkstyle.org/config_javadoc.html -->
+        <module name="InvalidJavadocPosition"/>
+        <module name="JavadocMethod"/>
+        <module name="JavadocType"/>
+        <!-- <module name="JavadocVariable"/> -->
+        <module name="JavadocStyle"/>
+        <!-- <module name="MissingJavadocMethod"/> -->
 
         <!-- Checks for Naming Conventions.                  -->
         <!-- See https://checkstyle.org/config_naming.html -->
@@ -141,7 +169,7 @@
         </module>
         <module name="IllegalInstantiation"/>
         <module name="InnerAssignment"/>
-        <!-- <module name="MagicNumber"/> -->
+        <module name="MagicNumber"/>
         <module name="MissingSwitchDefault"/>
         <module name="MultipleVariableDeclarations"/>
         <module name="SimplifyBooleanExpression"/>
@@ -149,11 +177,11 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
-        <!-- <module name="DesignForExtension"/> -->
+        <module name="DesignForExtension"/>
         <module name="FinalClass"/>
         <!-- <module name="HideUtilityClassConstructor"/> -->
         <module name="InterfaceIsType"/>
-        <!-- <module name="VisibilityModifier"/> -->
+        <module name="VisibilityModifier"/>
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See https://checkstyle.org/config_misc.html -->
@@ -173,8 +201,6 @@
             <property name="optional" value="true"/>
         </module>
 
-        <module name="SuppressionCommentFilter">
-            <property name="checkFormat" value="MethodLength"/>
-        </module>
     </module>
+
 </module>
