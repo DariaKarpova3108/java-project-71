@@ -1,4 +1,4 @@
-package formatters.plain;
+package hexlet.code.formatters.plain;
 
 import hexlet.code.StatusValue;
 

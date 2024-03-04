@@ -1,4 +1,4 @@
-package formatters.stylish;
+package hexlet.code.formatters.stylish;
 
 import hexlet.code.StatusValue;
 
