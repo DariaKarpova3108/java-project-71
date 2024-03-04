@@ -14,7 +14,7 @@ test:
 	./gradlew test
 
 report:
-	./gradlew jacocoTestReport
+	./gradlew jacocoTestCoverage jacocoTestReport
 
 install:
 	./gradlew clean install
