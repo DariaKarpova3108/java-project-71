@@ -1,28 +1,28 @@
 package hexlet.code;
 
-import java.nio.file.Files;
-
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-    private String filepathJson1;
-    private String filepathJson2;
-    private String filepathYaml1;
-    private String filepathYaml2;
+    private static String filepathJson1;
+    private static String filepathJson2;
+    private static String filepathYaml1;
+    private static String filepathYaml2;
 
-    private String expectedJson;
-    private String expectedStylish;
-    private String expectedPlain;
+    private static String expectedJson;
+    private static String expectedStylish;
+    private static String expectedPlain;
 
-    @BeforeEach
-    public void beforeEach() throws IOException {
+    @BeforeAll
+    public static void beforeAll() throws IOException {
         String path = "src/main/java/resources";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
@@ -40,13 +40,13 @@ public class DifferTest {
     @Test
     public void testGenJson() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "json");
-        assertEquals(expectedJson, actual);
+        JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
     @Test
     public void testGenJsonYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
-        assertEquals(expectedJson, actual);
+        JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
     @Test

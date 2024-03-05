@@ -27,6 +27,7 @@ public class Differ {
         Map<String, Object> file1 = objectMapper.convertValue(files.get("file1"), typeReference);
         Map<String, Object> file2 = objectMapper.convertValue(files.get("file2"), typeReference);
         List<Map<String, StatusValue>> list = tree(file1, file2);
-        return Formatter.convertFormat(format, list);
+        String result = Formatter.convertFormat(format, list);
+        return result;
     }
 }
