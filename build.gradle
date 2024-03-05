@@ -2,14 +2,11 @@ plugins {
     id 'java'
     id 'checkstyle'
 }
-
-group = 'hexlet.code'
-version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+checkstyle {
+    toolVersion = '8.42'
 }
-
-application {
-    mainClass = 'hexlet.code.App'
+task checkstyleMainNew(type: Checkstyle) {
+    source 'src/main/java'
+    include '**/*.java'
+    configFile = file('config/checkstyle/checkstyle.xml')
 }
