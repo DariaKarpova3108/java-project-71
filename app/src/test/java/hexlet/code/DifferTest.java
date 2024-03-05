@@ -12,17 +12,17 @@ import java.nio.file.Paths;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DifferTest {
-    private String filepathJson1;
-    private String filepathJson2;
-    private String filepathYaml1;
-    private String filepathYaml2;
+    private  static String filepathJson1;
+    private static String filepathJson2;
+    private static String filepathYaml1;
+    private static String filepathYaml2;
 
-    private String expectedJson;
-    private String expectedStylish;
-    private String expectedPlain;
+    private static String expectedJson;
+    private static String expectedStylish;
+    private static String expectedPlain;
 
     @BeforeAll
-    public void beforeAll() throws IOException {
+    public static void beforeAll() throws IOException {
         String path = "src/main/java/resources";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();
