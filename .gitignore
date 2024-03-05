@@ -1,6 +1,7 @@
 .idea/
 .gradle
-build/
+build
+.settings
 bin
 *.iml
 
