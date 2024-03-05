@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.nio.file.Files;
 
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.skyscreamer.jsonassert.JSONAssert;
 public class DifferTest {
     private  static String filepathJson1;
     private static String filepathJson2;
@@ -40,13 +41,13 @@ public class DifferTest {
     @Test
     public void testGenJson() throws Exception {
         var actual = Differ.generate(filepathJson1, filepathJson2, "json");
-        assertEquals(expectedJson, actual);
+        JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
     @Test
     public void testGenJsonYaml() throws Exception {
         var actual = Differ.generate(filepathYaml1, filepathYaml2, "json");
-        assertEquals(expectedJson, actual);
+        JSONAssert.assertEquals(expectedJson, actual, false);
     }
 
     @Test
