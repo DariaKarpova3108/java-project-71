@@ -21,6 +21,12 @@ public class App implements Callable<Integer> {
     @Parameters(paramLabel = "filepath2", index = "1", description = "path to second file")
     private String filepath2;
 
+    /**
+     * Executes the command to generate the difference between two files.
+     *
+     * @return the exit code indicating the success or failure of the command
+     */
+
     @Override
     public Integer call() {
         try {
