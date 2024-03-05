@@ -32,6 +32,7 @@ public class StatusValue {
     public String getStatus() {
         return status;
     }
+
     /**
      * Returns the old value.
      *
@@ -41,6 +42,7 @@ public class StatusValue {
     public Object getOldValue() {
         return oldValue;
     }
+
     /**
      * Returns the new value.
      *

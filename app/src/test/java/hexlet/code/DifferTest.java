@@ -11,9 +11,11 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.skyscreamer.jsonassert.JSONAssert;
+
 public class DifferTest {
-    private  static String filepathJson1;
+    private static String filepathJson1;
     private static String filepathJson2;
     private static String filepathYaml1;
     private static String filepathYaml2;
