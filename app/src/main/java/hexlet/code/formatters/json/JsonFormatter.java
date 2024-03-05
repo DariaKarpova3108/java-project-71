@@ -1,4 +1,4 @@
-package formatters.json;
+package hexlet.code.formatters.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hexlet.code.StatusValue;

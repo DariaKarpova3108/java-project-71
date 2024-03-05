@@ -1,4 +1,4 @@
-package formatters.plain;
+package hexlet.code.formatters.plain;
 
 import hexlet.code.StatusValue;
 
@@ -22,28 +22,19 @@ public class PlainFormatter {
             Object value2 = valueStatus.getNewValue();
 
             switch (status) {
-                case ("added"):
-                    resultList.add("Property" + " '" + key + "' " + "was added with value: " + isComposite(value2));
-                    break;
-                case ("update"):
-                    resultList.add("Property" + " '" + key + "' " + "was updated. From " + isComposite(value)
-                            + " to " + isComposite(value2));
-                    break;
-                case ("deleted"):
-                    resultList.add("Property" + " '" + key + "' " + "was removed");
-                    break;
-                case ("withoutChanges"):
-                    resultList.remove(key);
-                    break;
-                default:
-                    throw new Exception("Unknown status: " + "'" + "status" + "'");
+                case ("added") ->
+                        resultList.add("Property" + " '" + key + "' " + "was added with value: " + isComposite(value2));
+                case ("update") ->
+                        resultList.add("Property" + " '" + key + "' " + "was updated. From " + isComposite(value)
+                                + " to " + isComposite(value2));
+                case ("deleted") -> resultList.add("Property" + " '" + key + "' " + "was removed");
+                case ("withoutChanges") -> resultList.remove(key);
+                default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
-
         var result = resultList.stream()
-                .sorted(Comparator.comparing(str -> getSubstr(str)))
+                .sorted(Comparator.comparing(PlainFormatter::getSubstr))
                 .collect(Collectors.joining("\n"));
-
         return result;
     }
 
