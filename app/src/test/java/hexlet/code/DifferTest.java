@@ -3,6 +3,7 @@ package hexlet.code;
 import java.nio.file.Files;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -21,8 +22,8 @@ public class DifferTest {
     private String expectedStylish;
     private String expectedPlain;
 
-    @BeforeAll
-    public void beforeAll() throws IOException {
+    @BeforeEach
+    public void beforeEach() throws IOException {
         String path = "src/main/java/resources";
         File file = new File(path);
         String absolutePath = file.getAbsolutePath();

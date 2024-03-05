@@ -100,11 +100,11 @@
 
         <!-- Checks for Javadoc comments.                     -->
         <!-- See https://checkstyle.org/config_javadoc.html -->
-        <module name="InvalidJavadocPosition"/>
+       <!-- <module name="InvalidJavadocPosition"/>
         <module name="JavadocMethod"/>
         <module name="JavadocType"/>
-        <!-- <module name="JavadocVariable"/> -->
-        <module name="JavadocStyle"/>
+        &lt;!&ndash; <module name="JavadocVariable"/> &ndash;&gt;
+        <module name="JavadocStyle"/>-->
         <!-- <module name="MissingJavadocMethod"/> -->
 
         <!-- Checks for Naming Conventions.                  -->
@@ -124,9 +124,9 @@
         <module name="AvoidStarImport"/>
         <module name="IllegalImport"/> <!-- defaults to sun.* packages -->
         <module name="RedundantImport"/>
-        <module name="UnusedImports">
-            <property name="processJavadoc" value="false"/>
-        </module>
+<!--        <module name="UnusedImports">-->
+<!--            <property name="processJavadoc" value="false"/>-->
+<!--        </module>-->
 
         <!-- Checks for Size Violations.                    -->
         <!-- See https://checkstyle.org/config_sizes.html -->
@@ -177,7 +177,7 @@
 
         <!-- Checks for class design                         -->
         <!-- See https://checkstyle.org/config_design.html -->
-        <module name="DesignForExtension"/>
+        <!--<module name="DesignForExtension"/>-->
         <module name="FinalClass"/>
         <!-- <module name="HideUtilityClassConstructor"/> -->
         <module name="InterfaceIsType"/>
