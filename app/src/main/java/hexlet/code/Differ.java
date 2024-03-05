@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.List;
 import java.util.Map;
-
 import static hexlet.code.Tree.tree;
 
 public class Differ {
