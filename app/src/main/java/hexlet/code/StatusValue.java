@@ -1,10 +1,7 @@
 package hexlet.code;
 
 /**
- * Checks for changes in the value by key and, if there is any change, records them as a new StatusValue object
- * with three properties (change status, old value, new value)
- * @return creates and returns a new object based on value changes with three properties
- * (change status, old value, new value)
+ * Represents a status value with its old and new values.
  */
 
 public class StatusValue {
@@ -12,19 +9,43 @@ public class StatusValue {
     private final Object oldValue;
     private final Object newValue;
 
+    /**
+     * Constructs a new StatusValue with the given status, old value, and new value.
+     *
+     * @param status   the status of the value
+     * @param oldValue the old value
+     * @param newValue the new value
+     */
+
     public StatusValue(String status, Object oldValue, Object newValue) {
         this.status = status;
         this.oldValue = oldValue;
         this.newValue = newValue;
     }
 
+    /**
+     * Returns the status of the value.
+     *
+     * @return the status of the value
+     */
+
     public String getStatus() {
         return status;
     }
+    /**
+     * Returns the old value.
+     *
+     * @return the old value
+     */
 
     public Object getOldValue() {
         return oldValue;
     }
+    /**
+     * Returns the new value.
+     *
+     * @return the new value
+     */
 
     public Object getNewValue() {
         return newValue;
