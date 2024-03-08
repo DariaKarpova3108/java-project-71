@@ -9,6 +9,18 @@ import java.util.Map;
 
 public class JsonFormatter {
     public static String formatterJson(List<Map<String, StatusValue>> list) throws Exception {
+        Map<String, StatusValue> listMap = new HashMap<>();
+        for (Map<String, StatusValue> map : list) {
+            listMap.putAll(map);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        String result = mapper.writeValueAsString(listMap);
+        return result;
+    }
+}
+
+/*    public static String formatterJson(List<Map<String, StatusValue>> list) throws Exception {
         Map<String, Object> json = new HashMap<>();
 
         for (Map<String, StatusValue> map : list) {
@@ -32,14 +44,4 @@ public class JsonFormatter {
         ObjectMapper mapper = new ObjectMapper();
         String result = mapper.writeValueAsString(listStr);
         return result;
-    }
-
-    public static Object isComposite(Object value) {
-        if (value instanceof String && !value.equals("null")) {
-            value = value.toString();
-        } else if (value.equals("null")) {
-            value = null;
-        }
-        return value;
-    }
-}
+    }*/

@@ -2,7 +2,6 @@ package hexlet.code;
 
 import java.nio.file.Files;
 
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

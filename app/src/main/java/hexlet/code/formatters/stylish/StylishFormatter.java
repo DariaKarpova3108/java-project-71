@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StylishFormatter {
@@ -22,11 +23,13 @@ public class StylishFormatter {
             switch (status) {
                 case ("withoutChanges") -> resultList.add(Map.of("  " + key, valueOld.toString()));
                 case ("update") -> {
-                    resultList.add(Map.of("- " + key, valueOld.toString()));
-                    resultList.add(Map.of("+ " + key, valueNew.toString()));
+                    resultList.add(Map.of("- " + key, Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
+                    resultList.add(Map.of("+ " + key, Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
                 }
-                case ("deleted") -> resultList.add(Map.of("- " + key, valueOld.toString()));
-                case ("added") -> resultList.add(Map.of("+ " + key, valueNew.toString()));
+                case ("deleted") ->
+                        resultList.add(Map.of("- " + key, Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
+                case ("added") ->
+                        resultList.add(Map.of("+ " + key, Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
                 default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }

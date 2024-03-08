@@ -3,6 +3,7 @@ package hexlet.code.formatters.plain;
 import hexlet.code.StatusValue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -22,26 +23,19 @@ public class PlainFormatter {
             Object value2 = valueStatus.getNewValue();
 
             switch (status) {
-                case ("added"):
-                    resultList.add("Property" + " '" + key + "' " + "was added with value: " + isComposite(value2));
-                    break;
-                case ("update"):
-                    resultList.add("Property" + " '" + key + "' " + "was updated. From " + isComposite(value)
-                            + " to " + isComposite(value2));
-                    break;
-                case ("deleted"):
-                    resultList.add("Property" + " '" + key + "' " + "was removed");
-                    break;
-                case ("withoutChanges"):
-                    resultList.remove(key);
-                    break;
-                default:
-                    throw new Exception("Unknown status: " + "'" + "status" + "'");
+                case ("added") ->
+                        resultList.add("Property" + " '" + key + "' " + "was added with value: " + isComposite(value2));
+                case ("update") ->
+                        resultList.add("Property" + " '" + key + "' " + "was updated. From " + isComposite(value)
+                                + " to " + isComposite(value2));
+                case ("deleted") -> resultList.add("Property" + " '" + key + "' " + "was removed");
+                case ("withoutChanges") -> resultList.remove(key);
+                default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
 
         var result = resultList.stream()
-                .sorted(Comparator.comparing(str -> getSubstr(str)))
+                .sorted(Comparator.comparing(PlainFormatter::getSubstr))
                 .collect(Collectors.joining("\n"));
 
         return result;
@@ -53,12 +47,10 @@ public class PlainFormatter {
     }
 
     public static String isComposite(Object value) {
-        if (value instanceof Collection<?> || value.getClass().isArray() || value instanceof Map<?, ?>) {
+        if (value instanceof Collection<?> || value instanceof Arrays || value instanceof Map<?, ?>) {
             value = "[complex value]";
         } else if (value instanceof String && !value.equals("null")) {
             value = "'" + value + "'";
-        } else if (value.equals("null")) {
-            value = null;
         } else {
             value = String.valueOf(value);
         }

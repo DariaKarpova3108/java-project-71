@@ -6,8 +6,8 @@ package hexlet.code;
 
 public class StatusValue {
     private final String status;
-    private final Object oldValue;
-    private final Object newValue;
+    private Object oldValue;
+    private Object newValue;
 
     /**
      * Constructs a new StatusValue with the given status, old value, and new value.
@@ -51,5 +51,24 @@ public class StatusValue {
 
     public Object getNewValue() {
         return newValue;
+    }
+
+    /**
+     * Returns the update old value.
+     *
+     * @return the update old value
+     */
+    public void setOldValue(Object oldValue) {
+        this.oldValue = oldValue;
+    }
+
+    /**
+     * Returns the update new value.
+     *
+     * @return the update new value
+     */
+
+    public void setNewValue(Object newValue) {
+        this.newValue = newValue;
     }
 }

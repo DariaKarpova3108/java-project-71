@@ -23,8 +23,12 @@ dependencies {
     implementation 'info.picocli:picocli:4.7.1'
     annotationProcessor 'info.picocli:picocli-codegen:4.7.1'
     testImplementation group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
+}
 
-
+checkstyle {
+    toolVersion = '8.44'
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+    showViolations = true
 }
 
 test {
