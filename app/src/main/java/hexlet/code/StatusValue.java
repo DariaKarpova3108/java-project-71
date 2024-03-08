@@ -54,18 +54,19 @@ public class StatusValue {
     }
 
     /**
-     * Returns the update old value.
+     * Sets the old value for the object.
      *
-     * @return the update old value
+     * @param oldValue the new value to set
      */
+
     public void setOldValue(Object oldValue) {
         this.oldValue = oldValue;
     }
 
     /**
-     * Returns the update new value.
+     * Sets the new value for the object.
      *
-     * @return the update new value
+     * @param newValue the new value to set
      */
 
     public void setNewValue(Object newValue) {

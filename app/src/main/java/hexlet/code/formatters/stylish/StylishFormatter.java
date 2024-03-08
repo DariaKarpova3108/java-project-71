@@ -23,13 +23,17 @@ public class StylishFormatter {
             switch (status) {
                 case ("withoutChanges") -> resultList.add(Map.of("  " + key, valueOld.toString()));
                 case ("update") -> {
-                    resultList.add(Map.of("- " + key, Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
-                    resultList.add(Map.of("+ " + key, Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
+                    resultList.add(Map.of("- " + key,
+                            Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
+                    resultList.add(Map.of("+ " + key,
+                            Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
                 }
                 case ("deleted") ->
-                        resultList.add(Map.of("- " + key, Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
+                        resultList.add(Map.of("- " + key,
+                                Optional.ofNullable(valueOld).map(Object::toString).orElse("null")));
                 case ("added") ->
-                        resultList.add(Map.of("+ " + key, Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
+                        resultList.add(Map.of("+ " + key,
+                                Optional.ofNullable(valueNew).map(Object::toString).orElse("null")));
                 default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
