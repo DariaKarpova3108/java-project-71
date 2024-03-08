@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,7 +32,7 @@ public class DifferTest {
         return absolutePath + pahFile;
     }
 
-    public static String generateFile(String absolutePath, String pahFile) throws IOException {
+    public static String readFixture(String absolutePath, String pahFile) throws IOException {
         return Files.readString(Paths.get(generatePath(absolutePath, pahFile)));
     }
 
@@ -46,10 +45,10 @@ public class DifferTest {
         filepathYaml1 = generatePath(path, "/filepath1.yml");
         filepathYaml2 = generatePath(path, "/filepath2.yml");
 
-        String pathExp = getPath("src/test/java/recources");
-        expectedJson = generateFile(pathExp, "/expectedJson.json");
-        expectedStylish = generateFile(pathExp, "/expectedStylish.text");
-        expectedPlain = generateFile(pathExp, "/expectedPlain.text");
+        String pathExp = getPath("src/test/java/resources");
+        expectedJson = readFixture(pathExp, "/expectedJson.json");
+        expectedStylish = readFixture(pathExp, "/expectedStylish.text");
+        expectedPlain = readFixture(pathExp, "/expectedPlain.text");
     }
 
     @Test
