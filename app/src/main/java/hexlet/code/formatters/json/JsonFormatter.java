@@ -19,9 +19,7 @@ public class JsonFormatter {
         String result = mapper.writeValueAsString(listMap);
         return result;
     }
-}
-
-/*    public static String formatterJson(List<Map<String, StatusValue>> list) throws Exception {
+    /*    public static String formatterJson(List<Map<String, StatusValue>> list) throws Exception {
         Map<String, Object> json = new HashMap<>();
 
         for (Map<String, StatusValue> map : list) {
@@ -46,3 +44,5 @@ public class JsonFormatter {
         String result = mapper.writeValueAsString(listStr);
         return result;
     }*/
+}
+

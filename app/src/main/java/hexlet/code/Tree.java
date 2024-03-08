@@ -1,6 +1,7 @@
 package hexlet.code;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +37,7 @@ public class Tree {
         }
         return differ;
     }
-}
-
-/*    public static List<Map<String, StatusValue>> tree(Map<String, Object> file1, Map<String, Object> file2) {
+    /*    public static List<Map<String, StatusValue>> tree(Map<String, Object> file1, Map<String, Object> file2) {
         List<Map<String, StatusValue>> differ = new ArrayList<>();
 
         for (var entry : file1.entrySet()) {
@@ -66,3 +65,6 @@ public class Tree {
                         Optional.ofNullable(value2).orElse("null"))));
             }
         }*/
+}
+
+
