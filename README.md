@@ -19,3 +19,23 @@ to be compared and additionally write the desired format for outputting the diff
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bfd279cd76e94335bf76/test_coverage)](https://codeclimate.com/github/DariaKarpova3108/java-project-71/test_coverage)
 
 ##**Below are the askinems demonstrating the operation of the console application:**
+_View help information for program arguments and options_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/tiQOr54LpIbSC8pRGzaGZSeeC})
+
+_View a comparison of two json files without specifying the output format (by default it will output information in stylish format)_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/N6cRT0UqHYNxPJf4yS39743dD})
+
+_View a comparison of two yml files without specifying the output format (by default it will output information in stylish format)_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/prvqXHQFgLkE3RNOKmPmFJGod})
+
+_View a comparison of two json files with an explicit indication of the format - plain text format_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/GB2ZIdShunrEp3caN38VArWMo})
+
+_View a comparison of two yml files with an explicit indication of the format - plain text format_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/vJFEnXrGdlgZhQCTRtwZn2w1M})
+
+_View a comparison of two json files, explicitly specifying the json output_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/osRPy9BGOBBl4Awm8MBoJc6V4})
+
+_View a comparison of two yml files, explicitly specifying the json output_
+[![asciicast]({ссылка}.svg)]({https://asciinema.org/a/3D3keXKZYO8fX19yyvaDauoGf})
