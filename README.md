@@ -1,15 +1,13 @@
 ### Hexlet tests and linter status:
 
-##**Console application that finds the difference between files**
+## **Console application that finds the difference between files**
 _The code describes the operation of a console application whose task is to find the difference between two received
 files in json or yaml formats, and then outputs the found difference in the form of a new file, the format of which the
 user chooses from three possible options:_
-⋅⋅ by default - format "stylish" - text format, where changes are indicated by signs: "+" added, "-" deleted, and just "
-space" - the file remains unchanged
+ ###### ⋅⋅ by default - format "stylish" - text format, where changes are indicated by signs: "+" added, "-" deleted, and just "space" - the file remains unchanged 
 The user can choose from 2 more formats:
-⋅⋅ "plain" format - text format, where differences in the file are described in words
-⋅⋅ "json" format - json format, where changes are presented in the key:value format, where the value is presented
-complexly - change status, old value and new value
+ ###### ⋅⋅ "plain" format - text format, where differences in the file are described in words
+ ###### ⋅⋅ "json" format - json format, where changes are presented in the key:value format, where the value is presented complexly - change status, old value and new value
 
 To work with the application, the user needs to enter into the console the path to the location of the files that need
 to be compared and additionally write the desired format for outputting the differences
@@ -20,22 +18,22 @@ to be compared and additionally write the desired format for outputting the diff
 
 ##**Below are the askinems demonstrating the operation of the console application:**
 _View help information for program arguments and options_
-[![asciicast](https://asciinema.org/a/tiQOr54LpIbSC8pRGzaGZSeeC}.svg](https://asciinema.org/a/tiQOr54LpIbSC8pRGzaGZSeeC)
+[![asciicast](https://asciinema.org/a/646060.svg)](https://asciinema.org/a/646060)
 
 _View a comparison of two json files without specifying the output format (by default it will output information in stylish format)_
-[![asciicast](https://asciinema.org/a/N6cRT0UqHYNxPJf4yS39743dD}.svg](https://asciinema.org/a/N6cRT0UqHYNxPJf4yS39743dD)
+[![asciicast](https://asciinema.org/a/N6cRT0UqHYNxPJf4yS39743dD.svg)](https://asciinema.org/a/N6cRT0UqHYNxPJf4yS39743dD)
 
 _View a comparison of two yml files without specifying the output format (by default it will output information in stylish format)_
-[![asciicast](https://asciinema.org/a/prvqXHQFgLkE3RNOKmPmFJGod}.svg](https://asciinema.org/a/prvqXHQFgLkE3RNOKmPmFJGod)
+[![asciicast](https://asciinema.org/a/prvqXHQFgLkE3RNOKmPmFJGod.svg)](https://asciinema.org/a/prvqXHQFgLkE3RNOKmPmFJGod)
 
 _View a comparison of two json files with an explicit indication of the format - plain text format_
-[![asciicast](https://asciinema.org/a/GB2ZIdShunrEp3caN38VArWMo}.svg](https://asciinema.org/a/GB2ZIdShunrEp3caN38VArWMo)
+[![asciicast](https://asciinema.org/a/GB2ZIdShunrEp3caN38VArWMo.svg)](https://asciinema.org/a/GB2ZIdShunrEp3caN38VArWMo)
 
 _View a comparison of two yml files with an explicit indication of the format - plain text format_
-[![asciicast](https://asciinema.org/a/vJFEnXrGdlgZhQCTRtwZn2w1M}.svg](https://asciinema.org/a/vJFEnXrGdlgZhQCTRtwZn2w1M)
+[![asciicast](https://asciinema.org/a/vJFEnXrGdlgZhQCTRtwZn2w1M.svg)](https://asciinema.org/a/vJFEnXrGdlgZhQCTRtwZn2w1M)
 
 _View a comparison of two json files, explicitly specifying the json output_
-[![asciicast](https://asciinema.org/a/osRPy9BGOBBl4Awm8MBoJc6V4}.svg](https://asciinema.org/a/osRPy9BGOBBl4Awm8MBoJc6V4)
+[![asciicast](https://asciinema.org/a/osRPy9BGOBBl4Awm8MBoJc6V4.svg)](https://asciinema.org/a/osRPy9BGOBBl4Awm8MBoJc6V4)
 
 _View a comparison of two yml files, explicitly specifying the json output_
-[![asciicast](https://asciinema.org/a/3D3keXKZYO8fX19yyvaDauoGf}.svg](https://asciinema.org/a/3D3keXKZYO8fX19yyvaDauoGf)
+[![asciicast](https://asciinema.org/a/3D3keXKZYO8fX19yyvaDauoGf.svg)](https://asciinema.org/a/3D3keXKZYO8fX19yyvaDauoGf)
