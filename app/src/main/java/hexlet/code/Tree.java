@@ -40,37 +40,6 @@ public class Tree {
         }
         return result;
     }
-
-//    public static List<Map<String, StatusValue>> tree(Map<String, Object> file1, Map<String, Object> file2) {
-//        List<Map<String, StatusValue>> differ = new ArrayList<>();
-//
-//        for (var entry : file1.entrySet()) {
-//            Object value = entry.getValue();
-//            String key = entry.getKey();
-//            if (file2.containsKey(key)) {
-//                Object value2 = file2.get(key);
-//                if (Objects.equals(value, value2)) {
-//                    differ.add(Map.of(key, new StatusValue("withoutChanges", value, value2)));
-//                } else {
-//                    differ.add(Map.of(key, new StatusValue("update", value, value2)));
-//                }
-//            } else {
-//                differ.add(Map.of(key, new StatusValue("deleted", value,
-//                        null)));
-//            }
-//        }
-//
-//        for (var entry2 : file2.entrySet()) {
-//            String key2 = entry2.getKey();
-//            Object value2 = entry2.getValue();
-//            if (!file1.containsKey(key2)) {
-//                differ.add(Map.of(key2, new StatusValue("added", null,
-//                        value2)));
-//            }
-//        }
-//        return differ;
-//    }
-
 }
 
 
