@@ -1,63 +1,63 @@
 {
   "chars1": {
-    "status": "withoutChanges",
-    "oldValue": [
+    "status": "unchanged",
+    "valueOld": [
       "a",
       "b",
       "c"
     ],
-    "newValue": [
+    "valueNew": [
       "a",
       "b",
       "c"
     ]
   },
   "chars2": {
-    "status": "update",
-    "oldValue": [
+    "status": "changed",
+    "valueOld": [
       "d",
       "e",
       "f"
     ],
-    "newValue": false
+    "valueNew": false
   },
   "checked": {
-    "status": "update",
-    "oldValue": false,
-    "newValue": true
+    "status": "changed",
+    "valueOld": false,
+    "valueNew": true
   },
   "default": {
-    "status": "update",
-    "oldValue": null,
-    "newValue": [
+    "status": "changed",
+    "valueOld": null,
+    "valueNew": [
       "value1",
       "value2"
     ]
   },
   "id": {
-    "status": "update",
-    "oldValue": 45,
-    "newValue": null
+    "status": "changed",
+    "valueOld": 45,
+    "valueNew": null
   },
   "key1": {
     "status": "deleted",
-    "oldValue": "value1",
-    "newValue": null
+    "valueOld": "value1",
+    "valueNew": null
   },
   "key2": {
     "status": "added",
-    "oldValue": null,
-    "newValue": "value2"
+    "valueOld": null,
+    "valueNew": "value2"
   },
   "numbers1": {
-    "status": "withoutChanges",
-    "oldValue": [
+    "status": "unchanged",
+    "valueOld": [
       1,
       2,
       3,
       4
     ],
-    "newValue": [
+    "valueNew": [
       1,
       2,
       3,
@@ -65,14 +65,14 @@
     ]
   },
   "numbers2": {
-    "status": "update",
-    "oldValue": [
+    "status": "changed",
+    "valueOld": [
       2,
       3,
       4,
       5
     ],
-    "newValue": [
+    "valueNew": [
       22,
       33,
       44,
@@ -81,17 +81,17 @@
   },
   "numbers3": {
     "status": "deleted",
-    "oldValue": [
+    "valueOld": [
       3,
       4,
       5
     ],
-    "newValue": null
+    "valueNew": null
   },
   "numbers4": {
     "status": "added",
-    "oldValue": null,
-    "newValue": [
+    "valueOld": null,
+    "valueNew": [
       4,
       5,
       6
@@ -99,25 +99,25 @@
   },
   "obj1": {
     "status": "added",
-    "oldValue": null,
-    "newValue": {
+    "valueOld": null,
+    "valueNew": {
       "nestedKey": "value",
       "isNested": true
     }
   },
   "setting1": {
-    "status": "update",
-    "oldValue": "Some value",
-    "newValue": "Another value"
+    "status": "changed",
+    "valueOld": "Some value",
+    "valueNew": "Another value"
   },
   "setting2": {
-    "status": "update",
-    "oldValue": 200,
-    "newValue": 300
+    "status": "changed",
+    "valueOld": 200,
+    "valueNew": 300
   },
   "setting3": {
-    "status": "update",
-    "oldValue": true,
-    "newValue": "none"
+    "status": "changed",
+    "valueOld": true,
+    "valueNew": "none"
   }
 }

@@ -1,49 +1,36 @@
 package hexlet.code.formatters.plain;
 
-import hexlet.code.StatusValue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PlainFormatter {
-    public static String formatterPlain(List<Map<String, StatusValue>> list) throws Exception {
+    public static String formatterPlain(Map<String, Map<String, Object>> list) throws Exception {
         List<String> resultList = new ArrayList<>();
 
-        for (Map<String, StatusValue> map : list) {
-
-            String key = map.entrySet().iterator().next().getKey();
-            StatusValue valueStatus = map.entrySet().iterator().next().getValue();
-            String status = valueStatus.getStatus();
-            Object value = valueStatus.getOldValue();
-            Object value2 = valueStatus.getNewValue();
+        for (var entry : list.entrySet()) {
+            String key = entry.getKey();
+            Map<String, Object> values = entry.getValue();
+            String status = String.valueOf(values.get("status"));
+            Object value = values.get("valueOld");
+            Object value2 = values.get("valueNew");
 
             switch (status) {
                 case ("added") ->
                         resultList.add("Property" + " '" + key + "' " + "was added with value: " + isComposite(value2));
-                case ("update") ->
+                case ("changed") ->
                         resultList.add("Property" + " '" + key + "' " + "was updated. From " + isComposite(value)
                                 + " to " + isComposite(value2));
                 case ("deleted") -> resultList.add("Property" + " '" + key + "' " + "was removed");
-                case ("withoutChanges") -> resultList.remove(key);
+                case ("unchanged") -> resultList.remove(key);
                 default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
 
-        var result = resultList.stream()
-                .sorted(Comparator.comparing(PlainFormatter::getSubstr))
-                .collect(Collectors.joining("\n"));
-
-        return result;
-    }
-
-    public static String getSubstr(String str) {
-        int indexStart = str.indexOf("'") + 1;
-        return str.substring(indexStart);
+        return resultList.stream().collect(Collectors.joining("\n"));
     }
 
     public static String isComposite(Object value) {
