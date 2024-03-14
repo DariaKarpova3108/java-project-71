@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class PlainFormatter {
     public static String formatterPlain(Map<String, Map<String, Object>> list) throws Exception {
@@ -29,8 +28,7 @@ public class PlainFormatter {
                 default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }
-
-        return resultList.stream().collect(Collectors.joining("\n"));
+        return String.join("\n", resultList);
     }
 
     public static String isComposite(Object value) {
