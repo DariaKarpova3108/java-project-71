@@ -1,12 +1,12 @@
 {
   "chars1": {
     "status": "unchanged",
-    "valueOld": [
+    "value1": [
       "a",
       "b",
       "c"
     ],
-    "valueNew": [
+    "value2": [
       "a",
       "b",
       "c"
@@ -14,50 +14,50 @@
   },
   "chars2": {
     "status": "changed",
-    "valueOld": [
+    "value1": [
       "d",
       "e",
       "f"
     ],
-    "valueNew": false
+    "value2": false
   },
   "checked": {
     "status": "changed",
-    "valueOld": false,
-    "valueNew": true
+    "value1": false,
+    "value2": true
   },
   "default": {
     "status": "changed",
-    "valueOld": null,
-    "valueNew": [
+    "value1": null,
+    "value2": [
       "value1",
       "value2"
     ]
   },
   "id": {
     "status": "changed",
-    "valueOld": 45,
-    "valueNew": null
+    "value1": 45,
+    "value2": null
   },
   "key1": {
     "status": "deleted",
-    "valueOld": "value1",
-    "valueNew": null
+    "value1": "value1",
+    "value2": null
   },
   "key2": {
     "status": "added",
-    "valueOld": null,
-    "valueNew": "value2"
+    "value1": null,
+    "value2": "value2"
   },
   "numbers1": {
     "status": "unchanged",
-    "valueOld": [
+    "value1": [
       1,
       2,
       3,
       4
     ],
-    "valueNew": [
+    "value2": [
       1,
       2,
       3,
@@ -66,13 +66,13 @@
   },
   "numbers2": {
     "status": "changed",
-    "valueOld": [
+    "value1": [
       2,
       3,
       4,
       5
     ],
-    "valueNew": [
+    "value2": [
       22,
       33,
       44,
@@ -81,17 +81,17 @@
   },
   "numbers3": {
     "status": "deleted",
-    "valueOld": [
+    "value1": [
       3,
       4,
       5
     ],
-    "valueNew": null
+    "value2": null
   },
   "numbers4": {
     "status": "added",
-    "valueOld": null,
-    "valueNew": [
+    "value1": null,
+    "value2": [
       4,
       5,
       6
@@ -99,25 +99,25 @@
   },
   "obj1": {
     "status": "added",
-    "valueOld": null,
-    "valueNew": {
+    "value1": null,
+    "value2": {
       "nestedKey": "value",
       "isNested": true
     }
   },
   "setting1": {
     "status": "changed",
-    "valueOld": "Some value",
-    "valueNew": "Another value"
+    "value1": "Some value",
+    "value2": "Another value"
   },
   "setting2": {
     "status": "changed",
-    "valueOld": 200,
-    "valueNew": 300
+    "value1": 200,
+    "value2": 300
   },
   "setting3": {
     "status": "changed",
-    "valueOld": true,
-    "valueNew": "none"
+    "value1": true,
+    "value2": "none"
   }
 }

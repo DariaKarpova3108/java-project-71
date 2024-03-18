@@ -18,23 +18,23 @@ public class Tree {
             Map<String, Object> values = new LinkedHashMap<>();
             if (!file1.containsKey(key)) {
                 values.put("status", "added");
-                values.put("valueOld", null);
-                values.put("valueNew", file2.get(key));
+                values.put("value1", null);
+                values.put("value2", file2.get(key));
                 result.put(key, values);
             } else if (!file2.containsKey(key)) {
                 values.put("status", "deleted");
-                values.put("valueOld", file1.get(key));
-                values.put("valueNew", null);
+                values.put("value1", file1.get(key));
+                values.put("value2", null);
                 result.put(key, values);
             } else if (Objects.equals(file1.get(key), file2.get(key))) {
                 values.put("status", "unchanged");
-                values.put("valueOld", file1.get(key));
-                values.put("valueNew", file1.get(key));
+                values.put("value1", file1.get(key));
+                values.put("value2", file1.get(key));
                 result.put(key, values);
             } else if (!Objects.equals(file1.get(key), file2.get(key))) {
                 values.put("status", "changed");
-                values.put("valueOld", file1.get(key));
-                values.put("valueNew", file2.get(key));
+                values.put("value1", file1.get(key));
+                values.put("value2", file2.get(key));
                 result.put(key, values);
             }
         }

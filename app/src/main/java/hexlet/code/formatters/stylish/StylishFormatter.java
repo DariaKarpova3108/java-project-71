@@ -16,19 +16,18 @@ public class StylishFormatter {
             String status = String.valueOf(values.get("status"));
 
             switch (status) {
-                case ("unchanged") ->
-                        resultList.add(Map.of("  " + key,
-                                Optional.ofNullable(values.get("valueOld")).map(Object::toString).orElse("null")));
+                case ("unchanged") -> resultList.add(Map.of("  " + key,
+                        Optional.ofNullable(values.get("value1")).map(Object::toString).orElse("null")));
                 case ("changed") -> {
                     resultList.add(Map.of("- " + key,
-                            Optional.ofNullable(values.get("valueOld")).map(Object::toString).orElse("null")));
+                            Optional.ofNullable(values.get("value1")).map(Object::toString).orElse("null")));
                     resultList.add(Map.of("+ " + key,
-                            Optional.ofNullable(values.get("valueNew")).map(Object::toString).orElse("null")));
+                            Optional.ofNullable(values.get("value2")).map(Object::toString).orElse("null")));
                 }
                 case ("deleted") -> resultList.add(Map.of("- " + key,
-                        Optional.ofNullable(values.get("valueOld")).map(Object::toString).orElse("null")));
+                        Optional.ofNullable(values.get("value1")).map(Object::toString).orElse("null")));
                 case ("added") -> resultList.add(Map.of("+ " + key,
-                        Optional.ofNullable(values.get("valueNew")).map(Object::toString).orElse("null")));
+                        Optional.ofNullable(values.get("value2")).map(Object::toString).orElse("null")));
                 default -> throw new Exception("Unknown status: " + "'" + "status" + "'");
             }
         }

@@ -14,8 +14,8 @@ public class PlainFormatter {
             String key = entry.getKey();
             Map<String, Object> values = entry.getValue();
             String status = String.valueOf(values.get("status"));
-            Object value = values.get("valueOld");
-            Object value2 = values.get("valueNew");
+            Object value = values.get("value1");
+            Object value2 = values.get("value2");
 
             switch (status) {
                 case ("added") ->
