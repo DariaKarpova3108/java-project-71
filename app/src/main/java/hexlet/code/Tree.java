@@ -3,7 +3,6 @@ package hexlet.code;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -16,6 +15,7 @@ public class Tree {
 
         for (var key : keys) {
             Map<String, Object> values = new LinkedHashMap<>();
+
             if (!file1.containsKey(key)) {
                 values.put("status", "added");
                 values.put("value1", null);
@@ -26,12 +26,12 @@ public class Tree {
                 values.put("value1", file1.get(key));
                 values.put("value2", null);
                 result.put(key, values);
-            } else if (Objects.equals(file1.get(key), file2.get(key))) {
+            } else if (compareValues(file1.get(key), file2.get(key))) {
                 values.put("status", "unchanged");
                 values.put("value1", file1.get(key));
                 values.put("value2", file1.get(key));
                 result.put(key, values);
-            } else if (!Objects.equals(file1.get(key), file2.get(key))) {
+            } else {
                 values.put("status", "changed");
                 values.put("value1", file1.get(key));
                 values.put("value2", file2.get(key));
@@ -39,6 +39,12 @@ public class Tree {
             }
         }
         return result;
+    }
+
+    public static boolean compareValues(Object value1, Object value2) {
+        if (value1 == null || value2 == null) {
+            return value1 == value2;
+        } else return value1.equals(value2);
     }
 }
 

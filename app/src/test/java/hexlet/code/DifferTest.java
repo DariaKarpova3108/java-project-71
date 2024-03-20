@@ -28,27 +28,26 @@ public class DifferTest {
         return pathFile.toAbsolutePath().toString();
     }
 
-    public static String generatePath(String absolutePath, String pahFile) {
-        return absolutePath + pahFile;
+    public static String generatePath(String absolutePath, String pathFile) {
+        return absolutePath + pathFile;
     }
 
-    public static String readFixture(String absolutePath, String pahFile) throws IOException {
-        return Files.readString(Paths.get(generatePath(absolutePath, pahFile)));
+    public static String readFixture(String absolutePath, String pathFile) throws IOException {
+        return Files.readString(Paths.get(generatePath(absolutePath, pathFile)));
     }
 
     @BeforeAll
     public static void beforeAll() throws IOException {
-        String path = getPath("src/main/java/resources");
+        String path = getPath("src/test/java/resources");
 
         filepathJson1 = generatePath(path, "/filepath1.json");
         filepathJson2 = generatePath(path, "/filepath2.json");
         filepathYaml1 = generatePath(path, "/filepath1.yml");
         filepathYaml2 = generatePath(path, "/filepath2.yml");
 
-        String pathExp = getPath("src/test/java/resources");
-        expectedJson = readFixture(pathExp, "/expectedJson.json");
-        expectedStylish = readFixture(pathExp, "/expectedStylish.text");
-        expectedPlain = readFixture(pathExp, "/expectedPlain.text");
+        expectedJson = readFixture(path, "/expectedJson.json");
+        expectedStylish = readFixture(path, "/expectedStylish.text");
+        expectedPlain = readFixture(path, "/expectedPlain.text");
     }
 
     @Test
